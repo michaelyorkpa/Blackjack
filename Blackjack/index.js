@@ -1,4 +1,12 @@
-//Initialize variables
+//Adjustable Game Variables
+let betBtn1 = 1 //Value for bet button 1
+let betBtn2 = 5 //Value for bet button 2
+let betBtn3 = 10 //Value for bet button 3
+let betBtn4 = 20 //Value for bet button 4
+let numberOfDecks = 4 //Number of decks to draw from
+let money = 100 //Starting player's bank
+let dealerDrawTo = 17 //The number at which the dealer stays
+//Initialize variables !!DON'T CHANGE ANY VARIABLES BELOW THIS LINE!!
 let cardStack = [] //Holds full stack of cards, to include numberOfDecks below
 let playerHand = [] //Player's current hand
 let dealerHand = [] //Dealer's current hand
@@ -9,19 +17,11 @@ let dHandVal = [] //Dealer's current hand, card value only, sorted with Aces at 
 let playerSum = 0 //Sum of the player's cards
 let dealerSum = 0 //Sum of the dealer's cards
 let dealerSumShow = 0 //Sum of the dealer's cards shown if not dealer's turn
-let dealerDrawTo = 17 //The number at which the dealer stays
 let isDealerTurn = false //variable puts program in loop until dealer draws 17 or more.
 let roundOver = true //variable determines whether START GAME, HIT, and STAND buttons are active
 let cardID = 0 //variable used solely for determining random card number to pull from cardStack
 let bet = 0 //Value for bet, initialized at zero but gets its value as soon as player clicks a bet button
 let message = "" //For displaying messages on the UI
-//Adjustable Game Variables
-let betBtn1 = 1 //Value for bet button 1
-let betBtn2 = 5 //Value for bet button 2
-let betBtn3 = 10 //Value for bet button 3
-let betBtn4 = 20 //Value for bet button 4
-let numberOfDecks = 4 //Number of decks to draw from
-let money = 100 //Starting player's bank
 //DOM Object Variable Initialization
 let dealerCardsEl = document.getElementById("dealer-cards-el") //Stores the DOM object dealer cards
 let playerCardsEl = document.getElementById("player-cards-el") //Stores the DOM object player cards
@@ -49,11 +49,12 @@ let playerBlackjacks = 0
 let dealerBlackjacks = 0
 let dealerBusts = 0
 
-//Render the bet buttons
+//Render the bet buttons and show player money
 betBn1.textContent = "PLACE $" + betBtn1 + " BET"
 betBn2.textContent = "PLACE $" + betBtn2 + " BET"
 betBn3.textContent = "PLACE $" + betBtn3 + " BET"
 betBn4.textContent = "PLACE $" + betBtn4 + " BET"
+pBank.textContent = "Player Money: $"+money.toFixed(2)
 
 //Set bet using bet 1 and start the game
 function betButton1() {
@@ -238,24 +239,22 @@ function sumCards() {
     playerSum = 0 // Resets the sum to zero
     pHandAces = 0 // Resets the number of aces to zero
     pHandVal.splice(0,pHandVal.length) // Zeroes out the player hand value array
-    //This loop pulls all the values out and keeps track of the number of aces to add in in the next loop
+    //Loop pulls all the values out and keeps track of the number of aces
     for (ai=0; ai<playerHand.length; ai++) { let value = playerHand[ai].charAt(0); if (value === "A") { pHandAces++ } else { pHandVal.push(value) } }
-    //Checks to see if there are any aces in the hand, then runs a loop to add each ace to the end
-    if (pHandAces > 0) { for (ai=0; ai<pHandAces; ai++) { pHandVal.push("A") } }
-    //This loop checks the value of each card from pHandVal, which has been sorted to put aces at the end so that ace value is adjusted properly either 1 or 11
-    for (si=0; si<pHandVal.length; si++) { //Loop for the total number of cards in player's hand
+    //Loop checks the value of each card from pHandVal, which has been sorted to remove aces. This allows the logic for determining ace value at 1 or 11
+    for (si=0; si<(pHandVal.length); si++) { //Loop for the total number of cards in player's hand
         let value = pHandVal[si] // Save the current card value to the variable 'value'
-        if (value === "A") { //If the card is an ace
-            if (playerSum + 11 > 21) { // if the ace being 11 would push it over 21, then only add 1 to the player sum
-                playerSum++
-            } else { // if the ace being 11 doesn't push the player sum over 21, then add 11 to the player sum
-                playerSum += 11
-            }
-        // If the card is valued at 1 (10), J, Q, K add 10 to the player sum
-        } else if (value === "1" || value === "J" || value === "Q" || value === "K") {
-            playerSum += 10
+        if (value === "1" || value === "J" || value === "Q" || value === "K") {
+            playerSum += 10 //If the first character is a 1 (meaning 10), J, Q, or K add 10 to the player's sum
         } else { // Otherwise, add the face value of the card to the player sum.
             playerSum += parseInt(value) //parseInt converts the number to an integer
+        }
+    }
+    if (pHandAces > 0) { //If there is an ace in the hand, run this logic
+        if ((playerSum + 11 + (pHandAces-1))>21){ //Checks to see if one of the aces being 11 would push the total over 21
+            playerSum += pHandAces // If it does push it over 21, only add the total number of aces to the total
+        } else { //If the ace being 11 doesn't push it over, add 11 plus the number of aces minus 1 (the one you made 11)
+            playerSum += 11 + (pHandAces-1)
         }
     }
 
@@ -264,24 +263,22 @@ function sumCards() {
     dealerSumShow = 0 //Resets the sum to zero
     dHandAces = 0 // Resets the number of aces to zero
     dHandVal.splice(0,dHandVal.length) // Zeroes out the dealer hand value array
-    //Loop pulls all the values out and keeps track of the number of aces to add in in the next loop
+    //Loop pulls all the values out and keeps track of the number of aces
     for (ai=0; ai<dealerHand.length; ai++) { let value = dealerHand[ai].charAt(0); if (value === "A") { dHandAces++ } else { dHandVal.push(value) } }
-    //Checks to see if there are any aces in the hand, then runs a loop to add each ace to the end
-    if (dHandAces > 0) { for (ai=0; ai<dHandAces; ai++) { dHandVal.push("A") } }
-    //Loop checks the value of each card from dHandVal, which has been sorted to put aces at the end so that ace value is adjusted properly either 1 or 11
+    //Loop checks the value of each card from dHandVal, which has been sorted to remove aces. This allows the logic for determining ace value at 1 or 11
     for (si=0; si<dHandVal.length; si++) { //Loop for the total number of cards in dealer's hand
         let value = dHandVal[si] // Save the current card value to the variable 'value'
-        if (value === "A") { //If the card is an ace
-            if (dealerSum + 11 > 21) { // if the ace being 11 would push it over 21, then only add 1 to the dealer sum
-                dealerSum++
-            } else { // if the ace being 11 doesn't push the dealer sum over 21, then add 11 to the dealer sum
-                dealerSum += 11
-            }
-        // If the card is valued at 1 (10), J, Q, K add 10 to the dealer sum
-        } else if (value === "1" || value === "J" || value === "Q" || value === "K") {
-            dealerSum += 10
+        if (value === "1" || value === "J" || value === "Q" || value === "K") {
+            dealerSum += 10 //If the first character is a 1 (meaning 10), J, Q, or K add 10 to the dealer's sum
         } else { // Otherwise, add the face value of the card to the dealer sum.
             dealerSum += parseInt(value) //parseInt converts the number to an integer
+        }
+    }
+    if (dHandAces > 0) { //If there is an ace in the hand, run this logic
+        if ((dealerSum + 11 + (dHandAces-1))>21) { //Checks to see if one of the aces being 11 would push the total over 21
+            dealerSum += dHandAces // If it does push it over 21, only add the total number of aces to the total
+        } else { //If the ace being 11 doesn't push it over, add 11 plus the number of aces minus 1 (the one you made 11)
+            dealerSum += 11 + (dHandAces-1)
         }
     }
 
