@@ -28,4 +28,13 @@
   <li>Dealer Draw To: When it's the dealer's turn they will continue to draw cards to this variable's setting. Standard is 17.</li>
 </ul>
 
+<h3>Roadmap</h3>
+<p>Roadmap is a bit of a stretch, because it's just a basic Blackjack game, but I love Blackjack. I'll probably keep tweaking this for a while until I'm happy with it. Here are my future plans:</p>
+
+<ul>
+  <li>Split button - To be truly like a casino game, there needs to be a way to split the cards if the player draws two cards of the same value.</li>
+  <li>Mobile friendly - I will probably keep tweaking the layout so it is more responsive and looks good on a phone.</li>
+  <li>Multiplayer - As I progress through my journey of learning JS/Node I will likely make this multi-player, because it'll be way more fun.</li>
+</ul>
+
 <p>As I've mentioned, this is my first javascript project and it's been years since I've really worked with HTML and CSS heavily so I'm pretty new. If you have helpful comments or additions they will be warmly welcomed.</p>
