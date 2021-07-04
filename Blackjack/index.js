@@ -175,7 +175,7 @@ function renderGame() {
         let srcId = "pcard"+i
         document.getElementById(srcId).src = "images/" + playerHand[i] + ".png"
     }
-    let cardBlanks = 6 - playerHand.length
+    let cardBlanks = 11 - playerHand.length
     for (i=0; i<cardBlanks; i++) { //This loop reloads the blank/unused card spaces
         let tempId = playerHand.length+i
         let srcId = "pcard"+tempId
@@ -186,7 +186,11 @@ function renderGame() {
     if (isDealerTurn === true) {
         document.getElementById("dealer-sum-el").textContent = "Value: " + dealerSum
     } else {
+        if (dealerSumShow === 11) {
+            document.getElementById("dealer-sum-el").textContent = "Value: 1/11"
+        } else {
         document.getElementById("dealer-sum-el").textContent = "Value: " + dealerSumShow
+        }
     }
     dealerCardsEl.textContent = "Cards: "
     if (isDealerTurn === true) { //Only render all cards if it's the dealer turn. Otherwise only display first card
@@ -195,7 +199,7 @@ function renderGame() {
             let srcId = "dcard"+i
             document.getElementById(srcId).src = "images/" + dealerHand[i] + ".png"
         }
-        cardBlanks = 6 - dealerHand.length
+        cardBlanks = 11 - dealerHand.length
         for (i=0; i<cardBlanks; i++) {
             let tempId = dealerHand.length+i
             let srcId = "dcard"+tempId

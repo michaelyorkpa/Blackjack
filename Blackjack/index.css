@@ -60,6 +60,14 @@ img {
     border-width: 4px;
 }
 
+#player-cards-el {
+    visibility: hidden;
+}
+
+#dealer-cards-el {
+    visibility: hidden;
+}
+
 button {
     color: #016f32;
     width: 150px;
