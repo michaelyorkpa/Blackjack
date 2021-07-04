@@ -25,3 +25,6 @@
   <li>Player starting funds: $100 base</li>
   <li>Number of Decks: 4 base. The game doesn't really shuffle, so much as pull a random card from the stack until the stack is empty. I may redo this at some point for a "real" shuffle.</li>
   <li>Dealer Draw To: When it's the dealer's turn they will continue to draw cards to this variable's setting. Standard is 17.</li>
+</ul>
+
+<p>As I've mentioned, this is my first javascript project and it's been years since I've really worked with HTML and CSS heavily so I'm pretty new. If you have helpful comments or additions they will be warmly welcomed.</p>
