@@ -10,18 +10,18 @@
         <title>Blackjack!</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"> <!-- Normalizes the CSS for all browsers -->
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div id="playing-table">
-            <div id="player">
+        <div id="playing-table"> <!-- The players cards, buttons, and dealer's cards -->
+            <div id="player"> <!-- The box for the player's cards and score -->
                 <h2>Player</h2>
-                <p id="player-cards-el">Cards:</p>
-                <p id="player-sum-el">Value:</p>
+                <p id="player-cards-el">Cards:</p> <!-- Card values of Player's Hand (Debug) -->
+                <p id="player-sum-el">Value:</p><!-- Value of the cards in Player's Hand -->
                 <img src="images/blank.png" id="pcard0">
                 <img src="images/blank.png" id="pcard1">
                 <img src="images/blank.png" id="pcard2">
@@ -34,15 +34,15 @@
                 <img src="images/blank.png" id="pcard9">
                 <img src="images/blank.png" id="pcard10">
             </div>
-            <div id="buttonrow">
+            <div id="buttonrow"> <!-- This is the column of buttons and info in the center -->
                 <div>
                     <h1>Blackjack</h1>
-                    <h3><span id="pbank">Player Money: $100.00</span></h3>
-                    <p id="message-el">Want to play a round?</p>
-                    <h3><span id="cbet">Current Bet: </span></h3>
+                    <h3><span id="pbank">Player Money: </span></h3>
+                    <p id="message-el">Want to play a round?</p> <!-- This is where messages appear about the game status -->
+                    <h3><span id="cbet">Current Bet: </span></h3> <!-- This displays the current bet amount -->
                 </div>
                 <div>
-                    <button id="betbtn1" onclick="betButton1()">PLACE BET</button>
+                    <button id="betbtn1" onclick="betButton1()">PLACE BET</button> <!-- Value of each bet button controlled in JS file -->
                     <button id="betbtn2" onclick="betButton2()">PLACE BET</button>
                 </div>
                 <div>
@@ -50,7 +50,7 @@
                     <button id="betbtn4" onclick="betButton4()">PLACE BET</button>
                 </div>
                 <div>
-                    <button id="hitbtn" onclick="hitCard()">HIT</button>
+                    <button id="hitbtn" onclick="hitCard()">HIT</button> 
                     <button id="standbtn" onclick="standCard()">STAND</button>
                     <button id="doublebtn" onclick="doubleDown()">DOUBLE</button>
                 </div>
@@ -72,7 +72,7 @@
                 <img src="images/blank.png" id="dcard10">
             </div>
         </div>
-        <div id="stats">
+        <div id="stats"> <!-- Stats Section -->
             <h2>Stats</h2>
             <div id="stats-leftCol">
                 <p>Number of Rounds Played: <span id="roundsplayed"></span></p>

@@ -1,6 +1,5 @@
 //Initialize variables
 let cardStack = [] //Holds full stack of cards, to include numberOfDecks below
-let numberOfDecks = 4 //Number of decks to draw from
 let playerHand = [] //Player's current hand
 let dealerHand = [] //Dealer's current hand
 let pHandAces = 0 //How many aces in the player's hand
@@ -14,14 +13,19 @@ let dealerDrawTo = 17 //The number at which the dealer stays
 let isDealerTurn = false //variable puts program in loop until dealer draws 17 or more.
 let roundOver = true //variable determines whether START GAME, HIT, and STAND buttons are active
 let cardID = 0 //variable used solely for determining random card number to pull from cardStack
+let bet = 0 //Value for bet, initialized at zero but gets its value as soon as player clicks a bet button
 let message = "" //For displaying messages on the UI
-let dealerCardsEl = document.getElementById("dealer-cards-el") //Stores the DOM object dealer cards
-let playerCardsEl = document.getElementById("player-cards-el") //Stores the DOM object player cards
-let messageEl = document.getElementById("message-el") //Stores the DOM object player cards
+//Adjustable Game Variables
 let betBtn1 = 1 //Value for bet button 1
 let betBtn2 = 5 //Value for bet button 2
 let betBtn3 = 10 //Value for bet button 3
 let betBtn4 = 20 //Value for bet button 4
+let numberOfDecks = 4 //Number of decks to draw from
+let money = 100 //Starting player's bank
+//DOM Object Variable Initialization
+let dealerCardsEl = document.getElementById("dealer-cards-el") //Stores the DOM object dealer cards
+let playerCardsEl = document.getElementById("player-cards-el") //Stores the DOM object player cards
+let messageEl = document.getElementById("message-el") //Stores the DOM object player cards
 let betBn1 = document.getElementById("betbtn1") //Stores the DOM object Bet Button 1
 let betBn2 = document.getElementById("betbtn2") //Stores the DOM object Bet Button 2
 let betBn3 = document.getElementById("betbtn3") //Stores the DOM object Bet Button 3
@@ -29,10 +33,8 @@ let betBn4 = document.getElementById("betbtn4") //Stores the DOM object Bet Butt
 let hitBtn = document.getElementById("hitbtn") //Stores the DOM object Hit Button
 let standBtn = document.getElementById("standbtn") //Stores the DOM object Stand Button
 let doubleBtn = document.getElementById("doublebtn") //Stores the DOM object Double Button
-let bet = 0 //Value for bet, initialized at zero but gets its value as soon as player clicks a bet button
 let pBank = document.getElementById("pbank") //Stores the DOM object player bank (player money)
 let cBet = document.getElementById("cbet") //Stores the DOM object current bet
-let money = 100 //Starting player's bank
 // Stats variable initialization
 let roundsPlayed = 0
 let totalBetAmount = 0
