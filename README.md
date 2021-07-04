@@ -17,6 +17,7 @@
   <li>I've written logic to only show the dealer's first card and card value until the player's turn is over.</li>
   <li>I've written the logic to handle Aces having variable value based on the value of all the other cards in the hand.</li>
   <li>A double down button, only available on the player's first turn of a round. Doubles the bet amount (if the player has enough money) and ends the player's turn.</li>
+  <li>Stats. So. Many. Stats. It's only 12 stats, but still, it felt like a lot as I was adding them into the code.</li>
 </ul>
 
 <p>The following game mechanics are adjustable by changing the variables at the top of the .js file:</p>
