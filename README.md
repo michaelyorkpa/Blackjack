@@ -33,6 +33,7 @@
 
 <ul>
   <li>Split button - To be truly like a casino game, there needs to be a way to split the cards if the player draws two cards of the same value.</li>
+  <li>Help - I want to be able to put a button up that displays a pop up with the game's current settings (dealer draw to, etc.) as well as basic help text</li>
   <li>Mobile friendly - I will probably keep tweaking the layout so it is more responsive and looks good on a phone.</li>
   <li>Multiplayer - As I progress through my journey of learning JS/Node I will likely make this multi-player, because it'll be way more fun.</li>
 </ul>
