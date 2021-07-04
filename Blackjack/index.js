@@ -35,6 +35,7 @@ let standBtn = document.getElementById("standbtn") //Stores the DOM object Stand
 let doubleBtn = document.getElementById("doublebtn") //Stores the DOM object Double Button
 let pBank = document.getElementById("pbank") //Stores the DOM object player bank (player money)
 let cBet = document.getElementById("cbet") //Stores the DOM object current bet
+let dealerSumEl = document.getElementById("dealer-sum-el") //Stores the DOM object Dealer Sum
 // Stats variable initialization
 let roundsPlayed = 0
 let totalBetAmount = 0
@@ -49,7 +50,7 @@ let playerBlackjacks = 0
 let dealerBlackjacks = 0
 let dealerBusts = 0
 
-//Render the bet buttons and show player money
+//Render the bet buttons and show player money (Basically just for the first load)
 betBn1.textContent = "PLACE $" + betBtn1 + " BET"
 betBn2.textContent = "PLACE $" + betBtn2 + " BET"
 betBn3.textContent = "PLACE $" + betBtn3 + " BET"
@@ -184,12 +185,12 @@ function renderGame() {
 
     //Render dealer cards and card value. Logic and structure is identical to the player card render
     if (isDealerTurn === true) {
-        document.getElementById("dealer-sum-el").textContent = "Value: " + dealerSum
+        dealerSumEl.textContent = "Value: " + dealerSum
     } else {
         if (dealerSumShow === 11) {
-            document.getElementById("dealer-sum-el").textContent = "Value: 1/11"
+            dealerSumEl.textContent = "Value: 1/11"
         } else {
-        document.getElementById("dealer-sum-el").textContent = "Value: " + dealerSumShow
+        dealerSumEl.textContent = "Value: " + dealerSumShow
         }
     }
     dealerCardsEl.textContent = "Cards: "
@@ -429,5 +430,5 @@ function doubleDown() {
 }
 
 function noMoney() {
-    document.getElementById("message-el").textContent = "You don't have enough money!"
+    messageEl.textContent = "You don't have enough money!"
 }
