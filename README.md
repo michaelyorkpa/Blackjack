@@ -6,6 +6,10 @@
 
 <p>(His repository for his version <a href="https://github.com/scrimba/learn-javascript/tree/main/3.%20Build%20a%20Blackjack%20game/54.%20Congrats%20%26%20recap">here</a>)</p>
 
+<h3>Updates:</h3>
+
+<p>Updated on 2022-02-19. I completely re-wrote the HTML and CSS using grid and flex to make the layout full responsive for all screen layouts. The most difficult part was figuring out how to get the images to scale responsively. I found that using a width of 7vmax allowed me to neatly display up to 11 cards per person on the screen. It keeps them readable on all screen sizes.
+
 <p>I've gone further than the example in the video by adding the following:</p>
 
 <ul>
@@ -34,7 +38,7 @@
 <ul>
   <li>Split button - To be truly like a casino game, there needs to be a way to split the cards if the player draws two cards of the same value.</li>
   <li>Help - I want to be able to put a button up that displays a pop up with the game's current settings (dealer draw to, etc.) as well as basic help text</li>
-  <li>Mobile friendly - I will probably keep tweaking the layout so it is more responsive and looks good on a phone.</li>
+  <li>&check; Mobile friendly - I will probably keep tweaking the layout so it is more responsive and looks good on a phone.</li>
   <li>Multiplayer - As I progress through my journey of learning JS/Node I will likely make this multi-player, because it'll be way more fun.</li>
 </ul>
 
