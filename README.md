@@ -8,7 +8,7 @@
 
 <h3>Updates:</h3>
 
-<p>Updated on 2022-02-19. I completely re-wrote the HTML and CSS using grid and flex to make the layout full responsive for all screen layouts. The most difficult part was figuring out how to get the images to scale responsively. I found that using a width of 7vmax allowed me to neatly display up to 11 cards per person on the screen. It keeps them readable on all screen sizes.
+<p><strong>Updated on 2022-02-19.</strong> I completely re-wrote the HTML and CSS using grid and flex to make the layout full responsive for all screen layouts. The most difficult part was figuring out how to get the images to scale responsively. I found that using a width of 7vmax allowed me to neatly display up to 11 cards per person on the screen. It keeps them readable on all screen sizes.
 
 <p>I've gone further than the example in the video by adding the following:</p>
 
