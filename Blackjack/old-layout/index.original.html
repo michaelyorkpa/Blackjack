@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Blackjack!</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"> <!-- Normalizes the CSS for all browsers -->
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="container"> <!-- The players cards, buttons, and dealer's cards -->
+            <div></div>
+            <div id="player"> <!-- The box for the player's cards and score -->
+                <h2>Player</h2>
+                <p id="player-cards-el">Cards:</p> <!-- Card values of Player's Hand (Debug) -->
+                <p id="player-sum-el">Value:</p><!-- Value of the cards in Player's Hand -->
+                <div class="image-stack">
+                    <img src="" id="pcard0">
+                    <img src="" id="pcard1">
+                    <img src="" id="pcard2">
+                    <img src="" id="pcard3">
+                    <img src="" id="pcard4">
+                    <img src="" id="pcard5">
+                    <img src="" id="pcard6">
+                    <img src="" id="pcard7">
+                    <img src="" id="pcard8">
+                    <img src="" id="pcard9">
+                    <img src="" id="pcard10">
+                </div>
+            </div>
+            <div id="buttonrow"> <!-- This is the column of buttons and info in the center -->
+                <div>
+                    <h1>Blackjack</h1>
+                    <h3><span id="pbank">Player Money: </span></h3>
+                    <p id="message-el">Want to play a round?</p> <!-- This is where messages appear about the game status -->
+                    <h3><span id="cbet">Current Bet: </span></h3> <!-- This displays the current bet amount -->
+                </div>
+                <div>
+                    <button id="betbtn1" onclick="betButton1()">PLACE BET</button> <!-- Value of each bet button controlled in JS file -->
+                    <button id="betbtn2" onclick="betButton2()">PLACE BET</button>
+                </div>
+                <div>
+                    <button id="betbtn3" onclick="betButton3()">PLACE BET</button>
+                    <button id="betbtn4" onclick="betButton4()">PLACE BET</button>
+                </div>
+                <div>
+                    <button id="hitbtn" onclick="hitCard()">HIT</button> 
+                    <button id="standbtn" onclick="standCard()">STAND</button>
+                    <button id="doublebtn" onclick="doubleDown()">DOUBLE</button>
+                </div>
+            </div>
+            <div id="dealer">
+                <h2>Dealer</h2>
+                <p id="dealer-cards-el">Cards:</p>
+                <p id="dealer-sum-el">Value:</p>
+                <div class="image-stack">
+                    <img src="" id="dcard0">
+                    <img src="" id="dcard1">
+                    <img src="" id="dcard2">
+                    <img src="" id="dcard3">
+                    <img src="" id="dcard4">
+                    <img src="" id="dcard5">
+                    <img src="" id="dcard6">
+                    <img src="" id="dcard7">
+                    <img src="" id="dcard8">
+                    <img src="" id="dcard9">
+                    <img src="" id="dcard10">
+                </div>
+            </div>
+            <div></div>
+        </div>
+        <div id="stats"> <!-- Stats Section -->
+            <h2>Stats</h2>
+            <div id="stats-leftCol">
+                <p>Number of Rounds Played: <span id="roundsplayed"></span></p>
+                <p>Total Bet Amount: <span id="totalbetamount"></span></p>
+                <p>Total Cards Drawn: <span id="totalcardsdrawn"></span></p>
+                <p>Times Deck Shuffled: <span id="timesdeckshuffled"></span></p>
+                <p>Total Amount Won: <span id="totalamountwon"></span></p>
+                <p>Total Amount Lost: <span id="totalamountlost"></span></p>
+            </div>
+            <div id="stats-rightCol">
+                <p>Rounds Won: <span id="roundswon"></span></p>
+                <p>Rounds Lost: <span id="roundslost"></span></p>
+                <p>Rounds Tied: <span id="roundstied"></span></p>
+                <p>Player Blackjacks: <span id="playerblackjacks"></span></p>
+                <p>Dealer Blackjacks: <span id="dealerblackjacks"></span></p>
+                <p>Dealer Busts: <span id="dealerbusts"></span></p>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>

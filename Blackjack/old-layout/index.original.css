@@ -1,0 +1,277 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
+    background-image: url("images/table.png");
+    background-size: cover;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+
+h1 {
+    color: goldenrod;
+}
+
+h2 {
+    color: goldenrod;
+    text-decoration: underline;
+}
+
+img {
+    max-width: 75px;
+    height: auto;
+}
+
+#message-el {
+    font-size: 26px;
+    font-style: italic;
+    background: whitesmoke;
+    color: #016f32;;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 1rem;
+    align-items: center;
+    padding: 1%;
+}
+
+#player {
+    display:grid;
+    position: relative;
+    grid-column: 1 / span 3;
+    grid-row: 1;
+    border: goldenrod;
+    border-style: double;
+    border-width: 4px;
+}
+
+/*#player img {
+    width: 75px;
+    height: auto;
+}
+
+#dealer img {
+    width: 75px;
+    height: auto;
+}*/
+
+#buttonrow {
+    position: relative;
+    grid-column: 5 / span 3;
+    grid-row: 1;
+    align-items: center;
+}
+
+#dealer {
+    position: relative;
+    grid-column: 9 / span 3;
+    grid-row: 1;
+    border: goldenrod;
+    border-style: double;
+    border-width: 4px;
+}
+
+.image-stack {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    position:relative;
+}
+
+#pcard0 {
+    grid-column: 5;
+    grid-row: 1;
+    z-index: 1;
+}
+#pcard1 {
+    grid-column: 5/span 2;
+    grid-row: 1;
+    z-index: 2;
+    padding-left: 15%;
+}
+#pcard2 {
+    grid-column: 5/span 2;
+    grid-row: 1;
+    z-index: 3;
+    padding-left: 30%;
+}
+#pcard3 {
+    grid-column: 5/span 2;
+    grid-row: 1;
+    z-index: 4;
+    padding-left: 45%;
+}
+#pcard4 {    
+    grid-column: 5/span 2;
+    grid-row: 1;
+    z-index: 5;
+    padding-left: 60%;
+}
+#pcard5 {
+    grid-column: 5/span 2;
+    grid-row: 1;
+    z-index: 6;
+    padding-left: 75%;
+}
+#pcard6 {
+    grid-column: 6;
+    grid-row: 2;
+    z-index: 7;
+    padding-left: 10%
+}
+#pcard7 {
+    grid-column: 6/span 2;
+    grid-row: 2;
+    z-index: 8;
+    padding-top: 50%;
+    padding-left: 25%;
+}
+#pcard8 {
+    grid-column: 6/span 2;
+    grid-row: 2;
+    z-index: 9;
+    padding-top: 50%;
+    padding-left: 40%;
+}
+#pcard9 {
+    grid-column: 6/span 2;
+    grid-row: 2;
+    z-index: 10;
+    padding-top: 50%;
+    padding-left: 55%;
+}
+#pcard10 {
+    grid-column: 6/span 2;
+    grid-row: 2;
+    z-index: 11;
+    padding-top: 50%;
+    padding-left: 70%;
+}
+#dcard0 {
+    grid-column: 5;
+    grid-row: 1;
+    z-index: 1;
+}
+#dcard1 {
+    grid-column: 5/span 2;
+    grid-row: 1;
+    z-index: 2;
+    padding-left: 15%;
+}
+#dcard2 {
+    grid-column: 5/span 2;
+    grid-row: 1;
+    z-index: 3;
+    padding-left: 30%;
+}
+#dcard3 {
+    grid-column: 5/span 2;
+    grid-row: 1;
+    z-index: 4;
+    padding-left: 45%;
+}
+#dcard4 {    
+    grid-column: 5/span 2;
+    grid-row: 1;
+    z-index: 5;
+    padding-left: 60%;
+}
+#dcard5 {
+    grid-column: 5/span 2;
+    grid-row: 1;
+    z-index: 6;
+    padding-left: 75%;
+}
+#dcard6 {
+    grid-column: 6;
+    grid-row: 2;
+    z-index: 7;
+    padding-left: 10%
+}
+#dcard7 {
+    grid-column: 6/span 2;
+    grid-row: 2;
+    z-index: 8;
+    padding-top: 50%;
+    padding-left: 25%;
+}
+#dcard8 {
+    grid-column: 6/span 2;
+    grid-row: 2;
+    z-index: 9;
+    padding-top: 50%;
+    padding-left: 40%;
+}
+#dcard9 {
+    grid-column: 6/span 2;
+    grid-row: 2;
+    z-index: 10;
+    padding-top: 50%;
+    padding-left: 55%;
+}
+#dcard10 {
+    grid-column: 6/span 2;
+    grid-row: 2;
+    z-index: 11;
+    padding-top: 50%;
+    padding-left: 70%;
+}
+
+#player-cards-el {
+    visibility: hidden;
+}
+
+#dealer-cards-el {
+    visibility: hidden;
+}
+
+button {
+    color: #016f32;
+    width: 150px;
+    background: goldenrod;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+#hitbtn {
+    background:darkgray;
+}
+
+#standbtn {
+    background:darkgray;
+}
+
+#doublebtn {
+    background: darkgray;
+}
+
+#stats {
+    width: 50%;
+    margin-left: 25%;
+    background: black;
+    opacity: 80%;
+}
+
+#stats-leftCol {
+    background:inherit;
+    width: 45%;
+    float: left;
+    text-align: left;
+    padding: 10px;
+}
+
+#stats-rightCol {
+    background: inherit;
+    width: 45%;
+    float: right;
+    text-align: left;
+    padding: 10px;
+}

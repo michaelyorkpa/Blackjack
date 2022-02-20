@@ -51,11 +51,11 @@ let dealerBlackjacks = 0
 let dealerBusts = 0
 
 //Render the bet buttons and show player money (Basically just for the first load)
-betBn1.textContent = "PLACE $" + betBtn1 + " BET"
-betBn2.textContent = "PLACE $" + betBtn2 + " BET"
-betBn3.textContent = "PLACE $" + betBtn3 + " BET"
-betBn4.textContent = "PLACE $" + betBtn4 + " BET"
-pBank.textContent = "Player Money: $"+money.toFixed(2)
+betBn1.textContent = "$" + betBtn1 + " BET"
+betBn2.textContent = "$" + betBtn2 + " BET"
+betBn3.textContent = "$" + betBtn3 + " BET"
+betBn4.textContent = "$" + betBtn4 + " BET"
+pBank.textContent = "Money: $"+money.toFixed(2)
 
 //Set bet using bet 1 and start the game
 function betButton1() {
@@ -165,8 +165,8 @@ function renderGame() {
         }
     }
     //Render player's current bank account; .toFixed forces 2 decimal points to account for coins
-    pBank.textContent = "Player Money: $" + money.toFixed(2) 
-    cBet.textContent = "Current Bet: $" + bet //Render the current bet amount (may change during play if double down is pressed)
+    pBank.textContent = "Money: $" + money.toFixed(2) 
+    cBet.textContent = "Bet: $" + bet //Render the current bet amount (may change during play if double down is pressed)
     document.getElementById("message-el").textContent = message //Render messages
     //Render player cards, card images, and card value
     document.getElementById("player-sum-el").textContent = "Value: " + playerSum
@@ -180,7 +180,7 @@ function renderGame() {
     for (i=0; i<cardBlanks; i++) { //This loop reloads the blank/unused card spaces
         let tempId = playerHand.length+i
         let srcId = "pcard"+tempId
-        document.getElementById(srcId).src = "images/blank.png"
+        document.getElementById(srcId).src = ""
     }
 
     //Render dealer cards and card value. Logic and structure is identical to the player card render
@@ -204,7 +204,7 @@ function renderGame() {
         for (i=0; i<cardBlanks; i++) {
             let tempId = dealerHand.length+i
             let srcId = "dcard"+tempId
-            document.getElementById(srcId).src = "images/blank.png"
+            document.getElementById(srcId).src = ""
         }
     } else {
         dealerCardsEl.textContent += dealerHand[0]+" "
@@ -212,7 +212,7 @@ function renderGame() {
         cardBlanks = 6
         for (i=1; i<cardBlanks; i++) {
             let srcId = "dcard"+i
-            document.getElementById(srcId).src = "images/blank.png"
+            document.getElementById(srcId).src = ""
         }
     }
 
