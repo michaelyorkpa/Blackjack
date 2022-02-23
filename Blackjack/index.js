@@ -21,7 +21,9 @@ let isDealerTurn = false //variable puts program in loop until dealer draws 17 o
 let roundOver = true //variable determines whether START GAME, HIT, and STAND buttons are active
 let cardID = 0 //variable used solely for determining random card number to pull from cardStack
 let bet = 0 //Value for bet, initialized at zero but gets its value as soon as player clicks a bet button
-let message = "" //For displaying messages on the UI
+let statuses = ["Want to play a round?", "HIT, STAND, or DOUBLE DOWN?", "HIT or STAND?", "Dealer Bust! You win!", "You Win!", 
+            "Blackjack! You Win!", "PUSH! It's a tie!", "PUSH! Double Blackjack", "Dealer Blackjack!", "You Lose!", "You went over 21! You lose!"]
+let message = statuses[0] //For displaying messages on the UI
 //DOM Object Variable Initialization
 let dealerCardsEl = document.getElementById("dealer-cards-el") //Stores the DOM object dealer cards
 let playerCardsEl = document.getElementById("player-cards-el") //Stores the DOM object player cards
@@ -102,6 +104,20 @@ function startGame() {
         roundsPlayed++
         isDealerTurn = false // Turn off the dealer turn variable at start of each round
         roundOver = false // Reset roundover to false so hit and stand buttons are activated
+        // This for loop clears the cards from the table before rebuilding. Puts two face down cards in both player and dealer's hands
+        for (i=0;i<10;i++) {
+            if (i === 0 || i === 1) {
+                srcId = "pcard"+i
+                document.getElementById(srcId).src = "images/green_back.png"
+                srcId = "dcard"+i
+                document.getElementById(srcId).src = "images/green_back.png"
+            } else {
+                srcId = "pcard"+i
+                document.getElementById(srcId).src = ""
+                srcId = "dcard"+i
+                document.getElementById(srcId).src = ""
+            }
+        }
 
         //Clear out dealer and player hands
         if (playerHand.length > 0) {
@@ -167,7 +183,17 @@ function renderGame() {
     //Render player's current bank account; .toFixed forces 2 decimal points to account for coins
     pBank.textContent = "Money: $" + money.toFixed(2) 
     cBet.textContent = "Bet: $" + bet //Render the current bet amount (may change during play if double down is pressed)
-    document.getElementById("message-el").textContent = message //Render messages
+    messageEl.textContent = message //Render messages
+    if (message === statuses[0] || message === statuses[1] || message === statuses[2]) {
+        messageEl.style.color = "black"
+    } else if (message === statuses[3] || message === statuses[4] || message === statuses[5]) {
+        messageEl.style.color = "green"  // rgb(51, 65, 29)
+    } else if (message === statuses[6] || message === statuses[7]) {
+        messageEl.style.color = "orange"
+    } else if (message === statuses[8] || message === statuses[9] || message === statuses[10]) {
+        messageEl.style.color = "red"
+    }
+
     //Render player cards, card images, and card value
     document.getElementById("player-sum-el").textContent = "Value: " + playerSum
     playerCardsEl.textContent = "Cards: "
@@ -209,8 +235,9 @@ function renderGame() {
     } else {
         dealerCardsEl.textContent += dealerHand[0]+" "
         document.getElementById("dcard0").src = "images/" + dealerHand[0] + ".png"
+        document.getElementById("dcard1").src = "images/green_back.png"
         cardBlanks = 6
-        for (i=1; i<cardBlanks; i++) {
+        for (i=2; i<cardBlanks; i++) {
             let srcId = "dcard"+i
             document.getElementById(srcId).src = ""
         }
@@ -303,7 +330,7 @@ function sumCards() {
     if (playerHand.length === 2 && dealerHand.length === 2) {
         if (dealerSum === 21 && playerSum === 21) { //Checks for double blackjack
             isDealerTurn = true
-            message = "PUSH! Double Blackjack!"
+            message = statuses[7]
             roundOver = true //Mark the round over
             money += bet //Put the bet back in the player's bank
             playerBlackjacks++ //Total player blackjacks + 1
@@ -312,7 +339,7 @@ function sumCards() {
             return
         } else if (dealerSum === 21) { //Dealer Blackjack
             isDealerTurn = true
-            message = "Dealer Blackjack!"
+            message = statuses[8]
             roundOver = true //Mark the round over
             //Stats tracking
             dealerBlackjacks++ //Total dealer blackjacks + 1
@@ -320,7 +347,7 @@ function sumCards() {
             totalAmountLost += bet //Add bet from total amount lost
             return
         } else if (playerSum === 21) { //Player Blackjack
-            message = "Blackjack! You win!"
+            message = statuses[5]
             roundOver = true //Mark the round over
             money += bet + ((bet/2)*3) //Add 3:2 payout to player's money
             //Stats tracking
@@ -333,7 +360,7 @@ function sumCards() {
 
     //Player Busts
     if (playerSum > 21) {
-        message = "You went over 21! You lose!"
+        message = statuses[10]
         roundsLost++ //Add 1 to total rounds lost
         totalAmountLost += bet //Add bet to total amount lost
         roundOver = true //Mark round as over
@@ -343,16 +370,16 @@ function sumCards() {
     //Game is still going, ask the player whether they want to HIT or STAND
     if (playerSum < 21 && isDealerTurn === false) {
         if (playerHand.length === 2) { //If it's the initial draw, offer double down
-            message = "HIT, STAND, or DOUBLE DOWN?"
+            message = statuses[1]
         } else { //If it's after the initial draw, don't offer double down
-            message = "HIT or STAND?"
+            message = statuses[2]
         }
         return
     }
 
     //Dealer Busts
     if (dealerSum > 21) {
-        message = "Dealer Bust! You Win!"
+        message = statuses[3]
         roundOver = true //Mark round as over
         //Stats tracking
         roundsWon++ //add 1 to rounds won
@@ -365,7 +392,7 @@ function sumCards() {
     //Once the round has been marked as over because the Dealer has hit or exceeded his draw to limit
     if (roundOver === true) {
         if (playerSum > dealerSum) { //Player's total is greater than dealer. Player wins
-            message = "You win!"
+            message = statuses[4]
             roundOver = true //Mark round as over
             money += bet*2 //Return doubled bet to player's money
             //Stats tracking
@@ -373,14 +400,14 @@ function sumCards() {
             roundsWon++ //Add 1 to rounds won
             return
         } else if (playerSum < dealerSum) { //Dealer's total is greater than dealer. Dealer wins.
-            message = "You lose!"
+            message = statuses[9]
             roundOver = true //Mark round as over
             //Stats tracking
             totalAmountLost += bet //Add bet to total amount lost
             roundsLost++ //Add 1 to rounds lost
             return
         } else if (playerSum === dealerSum) { //Totals are the same. It's a push/tie.
-            message = "PUSH! It's a tie!"
+            message = statuses[6]
             roundOver = true //Mark round as over
             money += bet //Return the bet to the player since it's a tie
             //Stats tracking

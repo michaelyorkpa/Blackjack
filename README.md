@@ -8,6 +8,9 @@
 
 <h3>Updates:</h3>
 
+<p><strong>Updated on 2022-02-23.</strong> Updated some of the Javascript. Added in font color changes for the status messages. Also fixed a DOM object that I had created but
+never used (mesageEl). Increased the size of the buttons for better use on mobile. Also added back in the facedown dealer card (It stopped working after I updated the layout).
+
 <p><strong>Updated on 2022-02-19.</strong> I completely re-wrote the HTML and CSS using grid and flex to make the layout fully responsive for all screen layouts. The most difficult part was figuring out how to get the images to scale responsively. I found that using a width of 7vmax allowed me to neatly display up to 11 cards per person on the screen. It keeps them readable on all screen sizes.</p>
 
 <p>I've gone further than the example in the video by adding the following:</p>
